@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>一个粗糙的逐帧动画</title>
+	</head>
+	<body>
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"  width="400" height="400" style="border:1px solid yellow;background:orangered">
+			<rect style="border:1px solid blue;fill:yellowgreen" width="162" height = "162" x="10" y="10">
+				<animate id="frame1" attributeName="display" values="inline;none;none;none" keyTimes="0;0.33;0.66;1" dur="1s" begin="0s" repeatCount="indefinite">
+			</rect>
+			<circle style="border:1px solid blue;fill:beige"  cx="90" cy="94" r="63">
+				<animate id="frame2" attributeName="display" values="none;inline;none;none" keyTimes="0;0.33;0.66;1" dur="1s" begin="0s" repeatCount="indefinite">
+			</circle>	
+			<polygon style="border:1px solid blue;fill:#FFDF43" width="100" points="90,47 36,120 148,120">
+				<animate  id="frame3" attributeName="display" values="none;none;inline;none" keyTimes="0;0.33;0.66;1" dur="1s" begin="0s" repeatCount="indefinite" />  
+			</polygon>				
+		</svg>	
+	</body>
+</html>

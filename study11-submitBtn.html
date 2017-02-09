@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.content{
+			width:165px;
+			height:60px;
+			border: 1px solid red;
+		}
+		
+		.btn{
+			display: block;
+			width: 165px;
+			height: 45px;
+			border-radius: 10px;
+			background-color: #398B44;
+			color: white;
+			font-size: 14px;
+			text-align: center;
+			line-height:45px;
+			border: none;
+			outline: none;
+			opacity: 1;
+			margin: auto;
+			z-index: 2;
+			transition: all .5s linear;
+		}
+		.btn.loading{
+			width:0px;
+		}
+		.btn.error{
+			width: 165px;
+			background-color: #AD2A2A;
+			color: #FFFFFF;
+			opacity: 1;
+		}
+		.spin{
+			      position: absolute;
+				  top: 10px;
+				  left: 70px;
+				  content: "";
+				  border-radius: 39px;
+				  display: block;
+				  width: 39px;
+				  height: 39px;
+				  border: 2px solid #cccccc;
+				  border-top-color: green;
+				  z-index: -1;
+				  animation: spin 1s linear infinite;
+				  opacity: 1;
+		}
+		@keyframes spin{
+			from{
+				transform:rotate(0deg);
+			}
+			to{
+				transform:rotate(360deg);
+			}
+		}
+		.yes{
+			    position: absolute;
+			  left: 66px;
+			  top: 7px;
+			  opacity: 0;
+			    z-index: -1;
+		}
+		.path1{
+			stroke-dasharray: 27.8;
+			stroke-dashoffset: 27.8;
+			opacity:1;
+			animation: yesPath .3s linear forwards;
+		}
+		.path2{
+			stroke-dasharray: 11.1;
+			stroke-dashoffset: 11.1;
+			opacity:1;
+			animation: yesPath2 .3s linear forwards;
+		}
+		@keyframes yesPath{
+			from{
+				stroke-dashoffset: 0;
+			}
+			to{
+				stroke-dashoffset: 27.8;
+			}
+		}
+		@keyframes yesPath2{
+			from{
+				stroke-dashoffset: 0;
+			}
+			to{
+				stroke-dashoffset: 11.1;
+			}
+		}
+		.no{
+			position: absolute;
+			  left: 66px;
+			  top: 7px;
+			opacity: 0;
+			  z-index: -1;
+		}
+		
+	</style>
+	<body>
+		<div class="content">
+				<button id="submitBtn" class="btn"> 提交</button>
+		<svg width="50" height="50" class="yes">
+			<path class="paths-1" stroke-width="2" stroke="green"  d="m21.5,36.5l15.3,-23.2"></path>
+			<path class="paths-2" stroke-width="2" stroke="green"  d="m21.5,36.5l-8.5,-7.1"></path>
+		</svg>
+		<svg width="50" height="50" class="no">
+			<path stroke-width="2" stroke="white" d="m25,25l-9.3,-9.3"></path>
+			<path stroke-width="2" stroke="white"  d="m25,25l9.3,9.3"></path>
+			<path stroke-width="2" stroke="white"  d="m25,25l-9.3,9.3"></path>
+			<path stroke-width="2" stroke="white"  d="m25,25l9.3,-9.3"></path>
+		</svg>
+		
+		<!--<svg width="50" height="50" style="border:1px solid red;">
+			<circle stroke-width="2" stroke="grey" fill="none" cx="25" cy="25" r="20"/>
+		</svg>-->
+		<!--<svg width="50" height="50" class="circle2" >
+			<circle stroke-width="2" stroke="#cccccc" fill="none" cx="25" cy="25" r="20"/>
+		</svg>-->
+		<div class="spin"></div>
+		</div>
+	</body>
+</html>
+<script src="js/jquery-1.11.1.min.js"> </script>
+<script>
+//var path1 = document.querySelector('.path2');//869
+//var length1 = path1.getTotalLength();
+//alert(length1);
+$("#submitBtn").click(function (){
+	$("#submitBtn").attr("class","btn loading").fadeOut();
+	setTimeout("yes()",1000);
+});
+function yes(){
+	$(".spin").show();
+	$(".yes").css({
+		"opacity":"1",
+		"z-index":"1"
+	});
+	$("paths-1").attr("class","paths-1 path1");
+	$("paths-1").attr("class","paths-1 path2");
+	setTimeout("no()",2000);
+}
+function no(){
+	$(".yes").css({
+		"opacity":"0",
+		"z-index":"-1"
+	})
+		$(".no").css({
+				"opacity":"1",
+				"z-index":"1"
+			});
+			$("#submitBtn").attr("class","btn error").text("").show();	
+
+	setTimeout("init()",2000);
+}
+function init(){
+	$(".spin").hide();
+	$(".no").css({
+				"opacity":"1",
+				"z-index":"-1"
+			});
+	$("#submitBtn").attr("class","btn").text("提交");
+}
+</script>

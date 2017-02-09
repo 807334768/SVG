@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>图片四条线</title>
+		<style>
+			.container{
+				border: 1px solid red;
+				width: 400px;
+				height: 400px;
+				position: relative;
+				margin: auto;
+			}
+			svg{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+			}	
+			.images{
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				width: 100%;
+				height: 100%;
+			}	
+			figure{
+				  height: -webkit-calc((100% - 30px) * 1.02);
+				  left: 50%;
+				  position: absolute;
+				  z-index: 2;
+				  top: 50%;
+				  transform: translate(-50%,-50%);
+				  -webkit-transform: translate(-50%,-50%);
+				  transition: all 0.5s cubic-bezier(0.6, 0, 0.4, 1);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<svg  xmlns="http://www.w3.org/2000/svg"  width="100%" height="100%">
+				<line class="top" x1="0" y1="0" x2="900" y2="0"></line>
+				<line class="left" x1="0" y1="100%" x2="0" y2="-920"></line>
+				<line class="bottom" x1="300" y1="100%" x2="-600" y2="100%"></line>
+				<line class="right" x1="100%" y1="0" x2="100%" y2="600"></line>
+			</svg>
+			<figure>
+				<a href="javascript:void(0)"><img src="img/famale_model.jpg" class="images"></a>
+				<figcaption>
+						<span>自在漂浮的少年</span>
+				
+				</figcaption>
+			</figure>	
+		</div>
+	</body>
+</html>
+<script>
+ 
+</script>
